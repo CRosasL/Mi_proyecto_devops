@@ -15,3 +15,6 @@ jobs:
 
       - name: Verificar index.html
         run: test -f index.html
+
+      - name: Verificar etiqueta HTML
+        run: grep -q "<html>" index.html
