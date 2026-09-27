@@ -18,3 +18,6 @@ jobs:
 
       - name: Verificar etiqueta HTML
         run: grep -q "<html>" index.html
+
+      - name: Verificar título
+        run: grep -q "<h1>" index.html
