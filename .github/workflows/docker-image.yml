@@ -1,0 +1,26 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar codigo
+      uses: actions/checkout@v4
+      
+    - name: Construir imagen docker
+      run: docker build -t mi-proyecto-devops:latest .
+
+    - name: Ejecutar contenedor
+      run: docker run -d -p 8080:80 --name mi-proyecto-web mi-proyecto-devops:latest
+
+    - name: Probar aplicación
+      run: curl --fail http://localhost:8080
